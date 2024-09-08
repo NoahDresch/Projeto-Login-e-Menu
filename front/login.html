@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="main_login">
+        <div class="logo_login">
+            <h2>Faça login,<br>Acesse seu perfil!!</h2>
+            <img src="take-away-animate.svg" class="logo_login_img" alt="Delivery">
+        </div>
+        <div class="form_login">
+            <div class="card_login">
+                <h1>LOGIN</h1>
+                <div class="textfield">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" placeholder="Usuário" id="login">
+                </div>
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="password" placeholder="Senha" id="senha">
+                </div>
+                <button class="btn_login" input type="submit" onclick="logar(); return false">Login</button>
+            </div>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
