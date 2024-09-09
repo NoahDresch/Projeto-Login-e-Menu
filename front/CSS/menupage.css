@@ -13,7 +13,8 @@ html {
 body {
     display: flex;
     min-height: 100vh;
-    background-color: #120219;
+    /* background-color: #120219; cor original, voltar pra ela dps */
+    background-color: #ffffff; /* teste */
 }
 
 main {

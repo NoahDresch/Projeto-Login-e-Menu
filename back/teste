@@ -1,0 +1,13 @@
+
+
+// Comandos para instalar no terminal (ordem)
+//npm install -g ts-node
+//npm install -g typescript
+//npm install typescript --save-dev
+//Set-ExecutionPolicy -ExecutionPolicy  Unrestricted -Scope Process
+//npm install prompt-sync
+//npm install --save @types/prompt-sync
+// npm install express 
+// npm install @types/express
+// npm install cors 
+// npm install @types/cors
