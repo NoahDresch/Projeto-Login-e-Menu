@@ -56,7 +56,7 @@ async function gravarPagamento() {
 
     if (pagamentoResult.formapgt) {
         alert("Pagamento cadastrado com sucesso!");
-        window.location = "index.html";
+        window.location = "pagamento.html";
     } else {
         alert("Erro ao cadastrar pagamento!");
     }
@@ -88,7 +88,7 @@ async function excluirPagamento(codigo) {
 
 // Função para editar pagamento
 async function editarPagamento(codigo) {
-    window.location = "pagamento.html?id=" + codigo;
+    window.location = "formapgt.html?id=" + codigo;
 }
 
 // Função para carregar os dados de um pagamento para edição

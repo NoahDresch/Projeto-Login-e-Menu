@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Estilo do contêiner principal */
+/* .main-content {
+    margin: 0 auto;                   deixar comentado no momento
+    max-width: 800px;
+} */
+
+/* Título principal */
+.main-title {
+    color: #C299D0;
+    margin-bottom: 20px;
+}
+
+/* Link Adicionar Forma de Pagamento */
+.add-payment-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #D1B3FF;
+    color: #2b134b;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.add-payment-btn:hover {
+    background-color: #b380ff;
+}
+
+/* Estilo da tabela */
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* margin: 20px 0; */
+}
+
+.payment-table, 
+.payment-table th, 
+.payment-table td {
+    border: 1px solid #20042C;
+}
+
+.payment-table th, 
+.payment-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Cabeçalho da tabela */
+.table-header {
+    background-color: #C299D0;
+    color: #3D0D54;
+    font-size: 1.1em;
+}
+
+/* Linhas da tabela */
+.table-body tr:nth-child(even) {
+    background-color: #f3e6ff;
+    color: #2B134B;
+}
+
+.table-body tr:nth-child(odd) {
+    background-color: #e6ccff;
+    color: #2B134B;
+}
+
+/* Efeito hover na tabela */
+.table-body tr:hover {
+    background-color: #805392;
+    color: #ffffff;
+}
+
+/* Ações centralizadas */
+td:first-child {
+    text-align: center;
+}
+
+/* Ajuste de layout para telas pequenas */
+@media (max-width: 600px) {
+    .payment-table {
+        font-size: 0.9em;
+    }
+
+    .add-payment-btn {
+        padding: 4px 8px;
+    }
+
+    .payment-table th, 
+    .payment-table td {
+    padding: 6px;
+    text-align: left;
+}
+}
+
+/* Ajuste de layout para telas pequenas */
+@media (max-width: 450px) {
+    .payment-table {
+        font-size: 10px;
+    }
+
+    .add-payment-btn {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+
+    .payment-table th, 
+    .payment-table td {
+    padding: 4px;
+    text-align: left;
+    }
+}

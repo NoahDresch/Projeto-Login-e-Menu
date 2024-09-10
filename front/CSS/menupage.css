@@ -13,13 +13,16 @@ html {
 body {
     display: flex;
     min-height: 100vh;
-    /* background-color: #120219; cor original, voltar pra ela dps */
-    background-color: #ffffff; /* teste */
+    background-color: #120219; /*cor original, voltar pra ela dps*/
+    /* background-color: #ffffff; teste */
 }
 
 main {
     padding: 20px;
     color: #C299D0;
+    position: fixed;
+    z-index: 1;
+    padding-left: calc(82px + 50px);
 }
 
 #sidebar {
@@ -32,6 +35,7 @@ main {
     position: relative;
     transition: all .5s;
     min-width: 82px;
+    z-index: 2;
 }
 
 #sidebar_content {
