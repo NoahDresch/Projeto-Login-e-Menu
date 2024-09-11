@@ -5,13 +5,13 @@
 // npm install @types/cors
 // 
 // rodar este comando de baixo também, para ir ao postman(criar o link)
-// Set-ExecutionPolicy -ExecutionPolicy  Unrestricted -Scope Process
+// Set-ExecutionPolicy -ExecutionPolicy  Unrestricted -Scope Process
 //
 // Ctrl + c , para matar o terminal
 
 import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
-import {Pagamento} from './pagamento';
+import { Pagamento } from './pagamento';
 
 const port: Number = 3000;
 let server: Express = express();
@@ -50,19 +50,18 @@ server.post('/pagamento', async (req: Request, res: Response): Promise<Response>
     console.log("Dados recebidos:", req.body); // Log para verificar se os dados estão chegando
 
     // Validação do corpo da requisição
-    if (!req.body.formapgt || !req.body.localpgt) {
+    if (!req.body.formapgt) {
         return res.status(400).json({
-            erro: "Campos obrigatórios estão faltando: 'formapgt' e 'localpgt'"
+            erro: "Campo obrigatório 'formapgt' está faltando."
         });
     }
 
     // Criando um novo pagamento a partir dos dados do corpo da requisição
     console.log(req.body);
     let pagamento = new Pagamento();
-        pagamento.formapgt = req.body.formapgt;
-        pagamento.localpgt = req.body.localpgt;
-        pagamento.codigo = pagamentos.length;
-        pagamentos.push(pagamento);
+    pagamento.formapgt = req.body.formapgt;
+    pagamento.codigo = pagamentos.length;
+    pagamentos.push(pagamento);
 
     // Retorna o pagamento recém-criado como resposta
     return res.status(200).json(pagamento); // 200 = retorno de sucesso
@@ -76,7 +75,6 @@ server.put('/pagamento/:codigo', async (req: Request, res: Response): Promise<Re
 
     if (pagamento) {
         pagamento.formapgt = req.body.formapgt;
-        pagamento.localpgt = req.body.localpgt;
 
         return res.status(200).json(pagamento);
     }

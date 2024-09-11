@@ -1,13 +1,278 @@
 
 
-// Comandos para instalar no terminal (ordem)
-//npm install -g ts-node
-//npm install -g typescript
-//npm install typescript --save-dev
-//Set-ExecutionPolicy -ExecutionPolicy  Unrestricted -Scope Process
-//npm install prompt-sync
-//npm install --save @types/prompt-sync
-// npm install express 
-// npm install @types/express
-// npm install cors 
-// npm install @types/cors
+// // Comandos para instalar no terminal (ordem)
+// //npm install -g ts-node
+// //npm install -g typescript
+// //npm install typescript --save-dev
+// //Set-ExecutionPolicy -ExecutionPolicy  Unrestricted -Scope Process
+// //npm install prompt-sync
+// //npm install --save @types/prompt-sync
+// // npm install express 
+// // npm install @types/express
+// // npm install cors 
+// // npm install @types/cors
+
+
+
+
+
+// pagamento.ts
+// export class Pagamento {
+//     codigo: Number = 0;
+//     formapgt: string = "";
+//     localpgt: string = "";
+// }
+
+
+
+
+
+
+// app.ts
+// // Comandos para instalar no terminal
+// // npm install express 
+// // npm install @types/express
+// // npm install cors 
+// // npm install @types/cors
+// // 
+// // rodar este comando de baixo também, para ir ao postman(criar o link)
+// // Set-ExecutionPolicy -ExecutionPolicy  Unrestricted -Scope Process
+// //
+// // Ctrl + c , para matar o terminal
+
+// import express, { Express, Request, Response } from 'express';
+// import cors from 'cors';
+// import {Pagamento} from './pagamento';
+
+// const port: Number = 3000;
+// let server: Express = express();
+
+// server.use(cors());
+// server.use(express.json());
+
+// let pagamentos: Pagamento[] = [];
+
+// // Rota inicial
+// server.get('/', async (req: Request, res: Response): Promise<Response> => {
+//     return res.status(200).json('Olá, mundo!');
+// });
+
+// // Listar todos os pagamentos
+// server.get('/pagamento', async (req: Request, res: Response): Promise<Response> => {
+//     return res.status(200).json(pagamentos);
+// });
+
+// // Obter um pagamento pelo código
+// server.get('/pagamento/:codigo', async (req: Request, res: Response): Promise<Response> => {
+//     let codigo = Number(req.params.codigo);
+
+//     let pagamento = pagamentos.find(p => p.codigo === codigo);
+    
+//     if (pagamento) {
+//         return res.status(200).json(pagamento);
+//     }
+
+//     let erro = { "codigo": codigo, "erro": "Pagamento não encontrado." };
+//     return res.status(400).json(erro);
+// });
+
+// // Gravar novo pagamento
+// server.post('/pagamento', async (req: Request, res: Response): Promise<Response> => {
+//     console.log("Dados recebidos:", req.body); // Log para verificar se os dados estão chegando
+
+//     // Validação do corpo da requisição
+//     if (!req.body.formapgt || !req.body.localpgt) {
+//         return res.status(400).json({
+//             erro: "Campos obrigatórios estão faltando: 'formapgt' e 'localpgt'"
+//         });
+//     }
+
+//     // Criando um novo pagamento a partir dos dados do corpo da requisição
+//     console.log(req.body);
+//     let pagamento = new Pagamento();
+//         pagamento.formapgt = req.body.formapgt;
+//         pagamento.localpgt = req.body.localpgt;
+//         pagamento.codigo = pagamentos.length;
+//         pagamentos.push(pagamento);
+
+//     // Retorna o pagamento recém-criado como resposta
+//     return res.status(200).json(pagamento); // 200 = retorno de sucesso
+// });
+
+// // Editar pagamento existente
+// server.put('/pagamento/:codigo', async (req: Request, res: Response): Promise<Response> => {
+//     let codigo = Number(req.params.codigo);
+
+//     let pagamento = pagamentos.find(p => p.codigo === codigo);
+
+//     if (pagamento) {
+//         pagamento.formapgt = req.body.formapgt;
+//         pagamento.localpgt = req.body.localpgt;
+
+//         return res.status(200).json(pagamento);
+//     }
+
+//     let erro = { "codigo": codigo, "erro": "Pagamento não encontrado." };
+//     return res.status(400).json(erro);
+// });
+
+// // Excluir pagamento
+// server.delete('/pagamento/:codigo', async (req: Request, res: Response): Promise<Response> => {
+//     let codigo = Number(req.params.codigo);
+    
+//     let index = pagamentos.findIndex(p => p.codigo === codigo);
+
+//     if (index >= 0) {
+//         let pagamento = pagamentos.splice(index, 1)[0];
+//         return res.status(200).json(pagamento);
+//     }
+
+//     let erro = { "codigo": codigo, "erro": "Pagamento não encontrado." };
+//     return res.status(400).json(erro);
+// });
+
+// // Iniciar o servidor
+// server.listen(port, () => {
+//     console.log('Server iniciado na porta ' + port);
+// });
+
+
+
+
+
+
+
+
+// pagamento.js
+// const apiUrl =  "http://localhost:3000";
+
+// // Função para listar pagamentos
+// async function listarPagamentos() {
+//     const options = {
+//         method: "GET",
+//         redirect: "follow"
+//     };
+
+//     let result = await fetch(apiUrl + "/pagamento", options);
+//     let pagamentos = await result.json();
+//     let html = "";
+
+//     for (let i = 0; i < pagamentos.length; i++) {
+//         let pagamento = pagamentos[i];
+//         let excluir = `<button onclick="excluirPagamento(${pagamento.codigo})">Excluir</button>`;
+//         let editar = `<button onclick="editarPagamento(${pagamento.codigo})">Editar</button>`;
+
+//         html += `
+//         <tr>
+//             <td>${excluir} ${editar}</td>
+//             <td>${pagamento.codigo}</td>
+//             <td>${pagamento.formapgt}</td>
+//             <td>${pagamento.localpgt}</td>
+//         </tr>
+//         `;
+//     }
+
+//     document.getElementById('tbody-pagamentos').innerHTML = html;
+//     console.log(pagamentos);
+// }
+
+// // Função para gravar pagamento
+// async function gravarPagamento() {
+//     let id = pegarParametro('id');
+//     let method = id == null ? 'POST' : 'PUT';
+//     let url = id == null ? "/pagamento" : "/pagamento/" + id;
+
+//     let pagamento = {
+//         "formapgt": document.getElementById("formapgt").value,
+//         "localpgt": document.getElementById("localpgt").value
+//     };
+
+//     const myHeaders = new Headers();
+//     myHeaders.append("Content-Type", "application/json");
+
+//     const options = {
+//         method: method,
+//         body: JSON.stringify(pagamento),
+//         headers: myHeaders,
+//         redirect: "follow"
+//     };
+
+//     let result = await fetch(apiUrl + url, options);
+//     let pagamentoResult = await result.json();
+
+//     if (pagamentoResult.formapgt) {
+//         alert("Pagamento cadastrado com sucesso!");
+//         window.location = "pagamento.html";
+//     } else {
+//         alert("Erro ao cadastrar pagamento!");
+//     }
+
+//     console.log(pagamentoResult);
+// }
+
+// // Função para excluir pagamento
+// async function excluirPagamento(codigo) {
+//     if (confirm("Deseja realmente excluir?")) {
+//         const options = {
+//             method: "DELETE",
+//             redirect: "follow"
+//         };
+          
+//         let result = await fetch(apiUrl + "/pagamento/" + codigo, options);
+//         let json = await result.json();
+
+//         if (json.formapgt) {
+//             alert("Pagamento excluído com sucesso!");
+//             window.location.reload();
+//         } else {
+//             alert("Problemas em excluir o pagamento!");
+//         }
+
+//         console.log(json);
+//     }
+// }
+
+// // Função para editar pagamento
+// async function editarPagamento(codigo) {
+//     window.location = "formapgt.html?id=" + codigo;
+// }
+
+// // Função para carregar os dados de um pagamento para edição
+// async function carregarPagamento() {
+//     let id = pegarParametro('id');
+//     console.log("id " + id);
+
+//     if (id != null) {
+//         document.getElementById('h1').innerHTML = 'Editar pagamento';
+
+//         let result = await fetch(apiUrl + "/pagamento/" + id);
+//         let pagamento = await result.json();
+
+//         document.getElementById('formapgt').value = pagamento.formapgt;
+//         document.getElementById('localpgt').value = pagamento.localpgt;
+
+//         console.log(pagamento);
+//     }
+// }
+
+// // Função para pegar parâmetros da URL
+// function pegarParametro(parametro) {
+//     const queryString = window.location.search;
+//     const urlParams = new URLSearchParams(queryString);
+//     return urlParams.get(parametro);
+// }
+
+// // Função para permitir gravar dados ao pressionar Enter
+// function pressEnter() {
+//     if (event.key === 'Enter') {
+//         gravarPagamento();
+//     }
+// }
+
+
+
+
+
+
+
+

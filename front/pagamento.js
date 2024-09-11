@@ -21,7 +21,6 @@ async function listarPagamentos() {
             <td>${excluir} ${editar}</td>
             <td>${pagamento.codigo}</td>
             <td>${pagamento.formapgt}</td>
-            <td>${pagamento.localpgt}</td>
         </tr>
         `;
     }
@@ -37,8 +36,7 @@ async function gravarPagamento() {
     let url = id == null ? "/pagamento" : "/pagamento/" + id;
 
     let pagamento = {
-        "formapgt": document.getElementById("formapgt").value,
-        "localpgt": document.getElementById("localpgt").value
+        "formapgt": document.getElementById("formapgt").value
     };
 
     const myHeaders = new Headers();
@@ -103,7 +101,6 @@ async function carregarPagamento() {
         let pagamento = await result.json();
 
         document.getElementById('formapgt').value = pagamento.formapgt;
-        document.getElementById('localpgt').value = pagamento.localpgt;
 
         console.log(pagamento);
     }
